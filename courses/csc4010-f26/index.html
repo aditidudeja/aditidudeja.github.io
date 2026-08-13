@@ -1,313 +1,368 @@
-<doctype html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Aditi Dudeja</title>
+    <title>CSC4010: Introduction to Theoretical Computer Science — Fall 2026</title>
+    <meta name="description" content="Course webpage for CSC4010: Introduction to Theoretical Computer Science at CUHK-Shenzhen, Fall 2026.">
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width">
+    <!-- Reuse the same stylesheets as the personal homepage. -->
+    <link rel="stylesheet" href="../../stylesheets/styles.css">
+    <link rel="stylesheet" href="../../stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Course-page additions: a centered single-column layout and responsive tables. -->
+    <style>
+      /* Keep the course page typography stable across preview and deployment environments. */
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-variant-numeric: normal;
+        font-feature-settings: normal;
+        letter-spacing: normal;
+      }
+      h1, h2, h3, h4, h5, h6, th, td, p, li, a {
+        font-family: inherit;
+        letter-spacing: normal;
+      }
+
+      .wrapper {
+        width: auto;
+        max-width: 980px;
+        margin: 0 auto;
+      }
+      section {
+        width: auto;
+        float: none;
+        padding-bottom: 50px;
+      }
+
+      .course-title { margin-bottom: 6px; }
+      .course-term { color: #666; font-size: 16px; margin-bottom: 18px; }
+      .course-nav { margin-bottom: 20px; line-height: 1.8; }
+      .course-nav a { white-space: nowrap; }
+      .course-nav span { color: #bbb; padding: 0 6px; }
+      .notice {
+        background: #f8f8f8;
+        border: 1px solid #e5e5e5;
+        border-left: 4px solid #39c;
+        border-radius: 4px;
+        padding: 10px 12px;
+        margin-bottom: 20px;
+      }
+      .table-scroll { overflow-x: auto; margin-bottom: 20px; }
+      .table-scroll table { margin-bottom: 0; }
+      .schedule { min-width: 760px; }
+      .course-info th { width: 155px; vertical-align: top; }
+      .topics-table th { width: 185px; vertical-align: top; }
+      .schedule th, .schedule td { vertical-align: top; }
+      .schedule th:nth-child(1), .schedule td:nth-child(1) { width: 45px; text-align: center; }
+      .schedule th:nth-child(2), .schedule td:nth-child(2) { width: 105px; }
+      .schedule th:nth-child(4), .schedule td:nth-child(4) { width: 115px; }
+      .schedule th:nth-child(5), .schedule td:nth-child(5) { width: 120px; }
+      .tba { color: #8a6d3b; font-weight: 500; }
+      .muted { color: #888; }
+      .compact-list li { margin-bottom: 6px; }
+      .reference-table th { width: 70px; vertical-align: top; }
+      .last-updated { color: #888; font-size: 12px; margin-top: 30px; }
+
+      @media print, screen and (max-width: 960px) {
+        section {
+          border: 0;
+          margin: 0;
+          padding: 0 0 50px;
+        }
+      }
+
+      @media print, screen and (max-width: 720px) {
+        .course-info th { width: 105px; }
+        .topics-table th { width: 110px; }
+        .reference-table th { width: 55px; }
+
+        .schedule { min-width: 0; }
+        .schedule thead { display: none; }
+        .schedule, .schedule tbody, .schedule tr, .schedule td {
+          display: block;
+          width: 100%;
+          box-sizing: border-box;
+        }
+        .schedule tr {
+          border-bottom: 1px solid #e5e5e5;
+          padding: 8px 0;
+        }
+        .schedule td {
+          border-bottom: 0;
+          min-height: 24px;
+          padding: 2px 4px 2px 95px;
+          position: relative;
+          text-align: left !important;
+          width: 100% !important;
+        }
+        .schedule td::before {
+          color: #444;
+          font-weight: 500;
+          left: 4px;
+          position: absolute;
+          top: 2px;
+          width: 84px;
+        }
+        .schedule td:nth-child(1)::before { content: "Lecture"; }
+        .schedule td:nth-child(2)::before { content: "Date"; }
+        .schedule td:nth-child(3)::before { content: "Topic"; }
+        .schedule td:nth-child(4)::before { content: "Materials"; }
+        .schedule td:nth-child(5)::before { content: "Assessments"; }
+        .schedule td:empty { display: none; }
+      }
+    </style>
   </head>
   <body>
     <div class="wrapper">
-      <header>
-        <h1>Aditi Dudeja</h1>
-        <p>Tenure-track Assistant Professor
-<br> The School of Data Science, CUHK-Shenzhen </br> 
-
-<i><img src="photo.jpg" width="150px"></i>
-<h3> Email: </h3>
-aditidudeja (at) cuhk (dot) edu (dot) cn
-<br> aditi.dudeja (at) rutgers (dot) edu </br>
-</header>
       <section>
-        <h1>About Me</h1>
-<p> I am a tenure-track Assistant Professor at the School of Data Science, CUHK-Shenzhen. Prior to this, I was a postdoc in the <a href="https://www.plus.ac.at/big-data-algorithms/?lang=en"> Big Data Algorithms Group </a> at the University of Salzburg. I obtained my PhD from the <a href="https://www.cs.rutgers.edu"> Computer Science Department </a> of Rutgers University. My research interests are in graph algorithms. </p>
+        <h1 class="course-title">CSC4010: Introduction to Theoretical Computer Science</h1>
+        <p class="course-term"><strong>Fall 2026</strong> &middot; CUHK-Shenzhen</p>
 
+        <nav class="course-nav" aria-label="Course page sections">
+          <a href="#course-information">Course information</a><span>&middot;</span>
+          <a href="#topics">Topics</a><span>&middot;</span>
+          <a href="#grading">Grading</a><span>&middot;</span>
+          <a href="#calendar">Calendar</a><span>&middot;</span>
+          <a href="#resources">Resources</a>
+        </nav>
 
-        <h2>Publications</h2>
+        <div class="notice">
+          This page is being prepared for the Fall 2026 offering. Items marked <span class="tba">TBA</span> will be updated before the relevant course activity.
+        </div>
 
-<ol>
+        <h2 id="course-information">Course Information</h2>
+        <div class="table-scroll">
+          <table class="course-info">
+            <tbody>
+              <tr>
+                <th scope="row">Lectures</th>
+                <td><span class="tba">Time and room TBA</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Course format</th>
+                <td>3 units; undergraduate lecture course offered by the School of Data Science.</td>
+              </tr>
+              <tr>
+                <th scope="row">Tutorial</th>
+                <td>One tutorial each week, led by the instructor. <span class="tba">Time and room TBA</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Instructor</th>
+                <td><a href="../../">Aditi Dudeja</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Office hours</th>
+                <td><span class="tba">TBA</span> (office: Room 504b, Daoyuan Building)</td>
+              </tr>
+              <tr>
+                <th scope="row">Teaching staff</th>
+                <td><span class="tba">TBA</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Expected background</th>
+                <td>Comfort with mathematical proofs, discrete mathematics, asymptotic notation, and basic algorithm analysis. No prior course in computability or complexity theory is assumed.</td>
+              </tr>
+              <tr>
+                <th scope="row">Textbook</th>
+                <td>There is no required textbook. Lecture slides, notes, and required readings will be posted on this page or on the university learning platform.</td>
+              </tr>
+              <tr>
+                <th scope="row">Course outline</th>
+                <td><a href="https://www.cuhk.edu.cn/en/course/18543">Official course description</a>. The detailed course outline on the university system is authoritative for assessment and policy information.</td>
+              </tr>
+              <tr>
+                <th scope="row">Communication</th>
+                <td>Announcements will be posted on the university learning platform. For course-related email, please begin the subject line with <strong>[CSC4010]</strong>.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-<li> <p><b>Distributed Stochastic Graph Algorithms.</b>
-<br> with Keren Censor-Hillel, and George Giakkoupis </br>
-In <a href="https://www.podc.org/podc2026/"> PODC 2026 </a>
-<br>Full version: <a href="https://arxiv.org/abs/2605.21248"> [arXiv]. </a></br></p></li>
+        <h2 id="topics">Topics</h2>
+        <p>
+          This course studies two fundamental questions: <em>What can be computed?</em> and, among computable problems, <em>what can be computed efficiently?</em> We will formalize computation using mathematical models and use reductions, diagonalization, and hierarchy arguments to prove both possibility and impossibility results.
+        </p>
+        <p>The following list is tentative and may be adjusted as the term progresses.</p>
 
-<li> <p><b>Frontier Space-time Algorithms Using Only Full Memory.</b>
-<br> with Petr Chmel, Michal Koucký, Ian Mertz, and Ninad Rajgopal </br>
-In <a href="https://computationalcomplexity.org/"> CCC 2026 </a>
-<br>Full version: <a href="https://arxiv.org/abs/2602.21089"> [arXiv]. </a></br></p></li>
+        <div class="table-scroll">
+          <table class="topics-table">
+            <tbody>
+              <tr>
+                <th scope="row">Languages and models</th>
+                <td>Decision problems, languages, encodings, RAMs, Turing machines, and Boolean circuits.</td>
+              </tr>
+              <tr>
+                <th scope="row">Computability</th>
+                <td>Decidable and recognizable languages, variants of Turing machines, self-reference and the Recursion Theorem, undecidability, and reductions.</td>
+              </tr>
+              <tr>
+                <th scope="row">Time complexity</th>
+                <td>Polynomial time, the class P, time hierarchy, the class NP, certificates and verifiers, polynomial-time reductions, NP-hardness, NP-completeness, and the Cook&ndash;Levin Theorem.</td>
+              </tr>
+              <tr>
+                <th scope="row">Space complexity</th>
+                <td>PSPACE, hierarchy theorems for time and space, Savitch&rsquo;s Theorem, logarithmic space, sublogarithmic space, and small-space models of computation.</td>
+              </tr>
+              <tr>
+                <th scope="row">Restricted computation</th>
+                <td>Constant-space computation and finite automata, together with a comparison to context-free grammars and pushdown automata.</td>
+              </tr>
+              <tr>
+                <th scope="row">Modern viewpoints</th>
+                <td>Fine-grained complexity and introductory cryptographic applications of computational hardness and lower bounds.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-<li> <p><b>A Weighted-to-Unweighted Reduction for Matroid Intersection.</b>
-<br>with Mara Grilnberger</br>
-In <a href="https://events.math.unipd.it/ipco2026/"> IPCO 2026 </a>
-<br>Full version: <a href="https://arxiv.org/abs/2602.15702"> [arXiv]. </a></br>
-</p></li>
+        <p>
+          The university course listing describes CSC4010 as an introduction to the theory of computation: the study of which problems computational devices can solve and how efficiently they can solve them, using precise abstract models.
+        </p>
 
-<li> <p><b> The Careless Coupon Collector Problem.</b>
-<br>with Emilio Cruciani</br>
-In <a href="https://fun2026.limos.fr"> FUN 2026 </a>
-<br>Full version: <a href="https://arxiv.org/abs/2602.20705"> [arXiv]. </a></br>
-</p></li>
-
-<li> <p><b>Randomized Greedy Online Edge Coloring Succeeds for Dense and Randomly-Ordered Graphs.</b>
-<br>with Rashmika Goswami, Michael Saks.</br>
-In <a href="https://www.siam.org/conferences-events/siam-conferences/soda25/"> SODA 2025. </a>
-<br> Full version:  <a href="https://arxiv.org/abs/2406.13000"> [arXiv]. </a></br> </p></li>
-
-<li> <p><b>Matching Composition and Efficient Weight Reduction in Dynamic
-  Matching.</b>
-<br>with Aaron Bernstein, Jiale Chen, Zach Langley, Aaron Sidford, Ta-Wei Tu.</br>
-In <a href="https://www.siam.org/conferences-events/siam-conferences/soda25/"> SODA 2025. </a> </p></li>
-
-<li> <p><b>Decremental Matching in General Weighted Graphs.</b>
-<br>In <a href="https://compose.ioc.ee/icalp2024/"> ICALP 2024. </a></br>
-Full version:  <a href="https://arxiv.org/abs/2312.08996"> [arXiv]. </a> </p></li>
-
-<li> <p><b>Decremental Matching in General Graphs.</b>
-<br>with Sepehr Assadi, Aaron Bernstein.</br>
-In <a href="https://drops.dagstuhl.de/opus/volltexte/2022/16352/"> ICALP 2022. </a>
-<br> Full version:  <a href="DecMatchingv2.pdf"> [pdf]. </a></br>
-Slides: <a href="DecMatching.pdf"> [pdf]. </a>
-</p></li>
-
-<li><p><b> A Framework for Dynamic Matching in Weighted Graphs. </b>
-<br> with Aaron Bernstein, Zach Langley. </br>
-In <a href="https://doi.org/10.1145/3406325.3451113"> STOC 2021. </a>
-<br> Full version: <a href="weightedMatching.pdf"> [pdf]. </a></br>
-Talk (by Zach): <a href="https://www.youtube.com/watch?v=qGtsKamkj0U&t=278s"> [video]. </a>
-<br>Poster: <a href="stoc_poster.pdf"> [pdf]. </a></br></p></li>
-
-<li><p><b>Incremental SCC Maintenance in Sparse Graphs.</b>
-<br> with Aaron Bernstein, Seth Pettie.</br>
-In <a href="https://drops.dagstuhl.de/opus/volltexte/2021/14595/"> ESA 2021. </a>
-<br> Full version: <a href="SCCMaintenance.pdf"> [pdf]. </a> </br>
-Slides: <a href="esaTalk.pdf"> [pdf]. </a></p></li>
-
-<li><p><b>Ruling Sets in Random Order and Adversarial Streams.</b>
-<br>with Sepehr Assadi.</br>
-In <a href="https://drops.dagstuhl.de/opus/volltexte/2021/14808/"> DISC 2021. </a>
-<br> Talk: <a href="https://www.youtube.com/watch?v=DWWnADw-jZ8&t=6s"> [video]. </a></br>
-Slides: <a href="discfull.pdf"> [pdf]. </a></p></li>
-
-<li><p><b>A Simple Semi-Streaming Algorithm for Global Minimum Cuts.</b>
-<br>with Sepehr Assadi.</br>
-In <a href="https://doi.org/10.1137/1.9781611976496.19"> SOSA 2021.</a>
-<br> Full version: <a href="mincut.pdf"> [pdf]. </a> </br>
-Slides: <a href="pptSOSA.pdf"> [pdf].</a> </p></li>
-
-
-
-<li><p><b>Online Matching with Recourse: Random Edge Arrivals.</b>
-<br>with Aaron Bernstein.</br>
-In <a href="https://drops.dagstuhl.de/opus/volltexte/2020/13252/">FSTTCS 2020.</a>
-<br> Full version: <a href="main.pdf">[pdf]. </a></br>
-Talk: <a href="https://www.youtube.com/watch?v=Ur8mc0wK3NE"> [video]. </a>
-<br> Slides: <a href="OnlineMatchingRecourse.pdf"> [pdf]. </a> </br> </p></li>
-
-<li><p><b>Exact and FPT Algorithms for Max-Conflict Free Colouring in Hypergraphs</b>
-<br>with Pradeesha Ashok, Sudeshna Kolay.</br>
-In <a href="https://doi.org/10.1007/978-3-662-48971-0_24"> ISAAC 2015. </a></p></li>
-
-</ol>
-
-<h2>Talks</h2>
-      <ul>
-      <li> <a href="https://sigact.org/tcsforall/5th-tcs-women-meeting/tcs-women-2022-program/"> Dynamic Matching in Weighted Graphs </a>
-<br> Rising Star Talk at 5th TCS Women Meeting, STOC 2022 </br> </li>
-      </ul>
-
-
-
-<h2>Teaching</h2>
-<h3> At Rutgers: </h3>
-      <ul>
-<li> TA for CS 206: Introduction to Discrete Structures II, Summer 2021 and Summer 2022 </li>
-      <li> TA for CS 205: Introduction to Discrete Structures I, Summer 2020 </li>
-      <li> TA for CS 344: Algorithms, Fall 2019 </li>
-</ul>
-
-<h3> At Salzburg: </h3>
-<ul>
-<li>Co-Instructor for <a href="https://sites.google.com/view/ibda-summer24"> Introduction to Big Data Algorithms</a>, Summer 2024 </li>
-</ul>
-
-<h3>Miscellaneous</h3>
-<p> From Summer 2019 to Fall 2020, I was a co-organizer of the <a href="https://theory.cs.rutgers.edu/reading"> Theory of Computation Reading Seminar.</a> </p>
-
-
-
-
-
-
-
-
-
-
-
-<!--
-------------------------------------------------------------
-        <p>In addition to the changes in the previous section, certain references are auto-linked:</p>
-
-        <ul>
-          <li>SHA: be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2</li>
-          <li>User@SHA ref: <a href="https://github.com/mojombo/product/commit/be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2" class="commit-link">mojombo@<tt>be6a8cc</tt></a></li>
-          <li>User/Project@SHA: <a href="https://github.com/mojombo/god/commit/be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2" class="commit-link">mojombo/god@<tt>be6a8cc</tt></a></li>
-          <li>#Num: <a href="https://github.com/github/product/issues/1" class="issue-link" title="Baseline: What is up in the air right now?">#1</a></li>
-          <li>User/#Num: mojombo#1</li>
-          <li>User/Project#Num: <a href="https://github.com/mojombo/god/issues/1" class="issue-link" title="The server is not available (or you do not have permissions to access it)">mojombo/god#1</a></li>
-        </ul>
-
-        <p>These are dangerous goodies though, and we need to make sure email addresses don't get mangled:</p>
-
-        <p>My email addy is <a href="mailto:tom@github.com">tom@github.com</a>.</p>
-
-        <h2>Math is hard, let's go shopping</h2>
-
-        <p>In first grade I learned that 5 &gt; 3 and 2 &lt; 7. Maybe some arrows. 1 -&gt; 2 -&gt; 3. 9 &lt;- 8 &lt;- 7.</p>
-
-        <p>Triangles man! a^2 + b^2 = c^2</p>
-
-        <h2>We all like making lists</h2>
-
-        <p>The above header should be an H2 tag. Now, for a list of fruits:</p>
-
-        <ul>
-          <li>Red Apples</li>
-          <li>Purple Grapes</li>
-          <li>Green Kiwifruits</li>
-        </ul>
-
-        <p>Let's get crazy:</p>
-
-        <ol>
-          <li>
-            <p>This is a list item with two paragraphs. Lorem ipsum dolor<br>
-            sit amet, consectetuer adipiscing elit. Aliquam hendrerit<br>
-            mi posuere lectus.</p>
-
-            <p>Vestibulum enim wisi, viverra nec, fringilla in, laoreet<br>
-            vitae, risus. Donec sit amet nisl. Aliquam semper ipsum<br>
-            sit amet velit.</p>
-          </li>
-          <li><p>Suspendisse id sem consectetuer libero luctus adipiscing.</p></li>
+        <h3>Learning Outcomes</h3>
+        <p>By the end of the course, students should be able to:</p>
+        <ol class="compact-list">
+          <li>Model computational problems as languages and reason precisely about algorithms and machines.</li>
+          <li>Design and analyze Turing machines and explain why standard variants have equivalent computational power.</li>
+          <li>Prove undecidability and complexity results using reductions, diagonalization, self-reference, and hierarchy theorems.</li>
+          <li>Work fluently with central classes including P, NP, PSPACE, and logarithmic space, and explain the relationships proved in the course.</li>
+          <li>Recognize how classical lower-bound ideas lead to modern conditional lower bounds and cryptographic applications.</li>
+          <li>Write clear, rigorous proofs in theoretical computer science.</li>
         </ol>
 
-        <p>What about some code <strong>in</strong> a list? That's insane, right?</p>
-
-        <ol>
-          <li>
-            <p>In Ruby you can map like this:</p>
-
-            <pre><code>['a', 'b'].map { |x| x.uppercase }</code></pre>
-          </li>
-          <li>
-            <p>In Rails, you can do a shortcut:</p>
-
-            <pre><code>['a', 'b'].map(&amp;:uppercase)</code></pre>
-          </li>
-        </ol>
-
-        <p>Some people seem to like definition lists</p>
-
-        <dl>
-          <dt>Lower cost</dt>
-          <dd>The new version of this product costs significantly less than the previous one!</dd>
-          <dt>Easier to use</dt>
-          <dd>We've changed the product so that it's much easier to use!</dd>
-        </dl>
-
-        <h2>I am a robot</h2>
-
-        <p>Maybe you want to print <code>robot</code> to the console 1000 times. Why not?</p>
-
-        <pre><code>def robot_invasion
-  puts("robot " * 1000)
-end
-</code></pre>
-
-        <p>You see, that was formatted as code because it's been indented by four spaces.</p>
-
-        <p>How about we throw some angle braces and ampersands in there?</p>
-
-        <pre><code>&lt;div class="footer"&gt;
-    &amp;copy; 2004 Foo Corporation
-&lt;/div&gt;
-</code></pre>
-
-        <h2>Set in stone</h2>
-
-        <p>Preformatted blocks are useful for ASCII art:</p>
-
-        <pre>             ,-.
-    ,     ,-.   ,-.
-   / \   (   )-(   )
-   \ |  ,.&gt;-(   )-&lt;
-    \|,' (   )-(   )
-     Y ___`-'   `-'
-     |/__/   `-'
-     |
-     |
-     |    -hrr-
-  ___|_____________
-</pre>
-
-        <h2>Playing the blame game</h2>
-
-        <p>If you need to blame someone, the best way to do so is by quoting them:</p>
-
-        <blockquote>
-        <p>I, at any rate, am convinced that He does not throw dice.</p>
-        </blockquote>
-
-        <p>Or perhaps someone a little less eloquent:</p>
-
-        <blockquote>
-        <p>I wish you'd have given me this written question ahead of time so I<br>
-        could plan for it... I'm sure something will pop into my head here in<br>
-        the midst of this press conference, with all the pressure of trying to<br>
-        come up with answer, but it hadn't yet...</p>
-
-        <p>I don't want to sound like<br>
-        I have made no mistakes. I'm confident I have. I just haven't - you<br>
-        just put me under the spot here, and maybe I'm not as quick on my feet<br>
-        as I should be in coming up with one.</p>
-        </blockquote>
-
-        <h2>Table for two</h2>
-
+        <h2 id="grading">Grading</h2>
+        <p>
+          The course will use proof-based homework assignments, a midterm examination, and a final examination. The exact weights and the detailed collaboration policy will appear in the official course outline.
+        </p>
         <table>
           <tbody>
-        <tr>
-            <th>ID</th>
-        <th>Name</th>
-        <th>Rank</th>
-          </tr>
-          <tr>
-            <td>1</td>
-        <td>Tom Preston-Werner</td>
-        <td>Awesome</td>
-          </tr>
-          <tr>
-            <td>2</td>
-        <td>Albert Einstein</td>
-        <td>Nearly as awesome</td>
-          </tr>
-        </tbody>
+            <tr><th scope="row">Homework assignments</th><td><span class="tba">TBA</span></td></tr>
+            <tr><th scope="row">Midterm examination</th><td><span class="tba">TBA</span></td></tr>
+            <tr><th scope="row">Final examination</th><td><span class="tba">TBA</span></td></tr>
+          </tbody>
         </table>
+        <p>
+          Unless an assignment explicitly says otherwise, submitted solutions must be written in each student&rsquo;s own words and must clearly justify every nontrivial claim. The official course outline governs collaboration, late work, regrading, and academic-integrity rules.
+        </p>
 
-        <h2>Crazy linking action</h2>
+        <h2 id="calendar">Course Calendar</h2>
+        <p>
+          The calendar is tentative. Dates, lecture materials, assignment releases, and assessment information will be added as the term progresses.
+        </p>
+        <div class="table-scroll">
+          <table class="schedule">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Topic</th>
+                <th scope="col">Materials</th>
+                <th scope="col">Assessments</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td><span class="tba">TBA</span></td><td>Course introduction: languages, problems, algorithms, encodings, and computational models</td><td><span class="muted">to be posted</span></td><td></td></tr>
+              <tr><td>2</td><td><span class="tba">TBA</span></td><td>Turing machines</td><td><span class="muted">to be posted</span></td><td></td></tr>
+              <tr><td>3</td><td><span class="tba">TBA</span></td><td>Decidable languages and variants of Turing machines</td><td><span class="muted">to be posted</span></td><td></td></tr>
+              <tr><td>4</td><td><span class="tba">TBA</span></td><td>Self-reference and the Recursion Theorem</td><td><span class="muted">to be posted</span></td><td></td></tr>
+              <tr><td>5</td><td><span class="tba">TBA</span></td><td>Undecidability and the Halting Problem</td><td><span class="muted">to be posted</span></td><td></td></tr>
+              <tr><td>6</td><td><span class="tba">TBA</span></td><td>Reductions: how to prove problems undecidable</td><td><span class="muted">to be posted</span></td><td></td></tr>
+              <tr><td>7</td><td><span class="tba">TBA</span></td><td>Time complexity and the class P</td><td><span class="muted">to be posted</span></td><td></td></tr>
+              <tr><td>8</td><td><span class="tba">TBA</span></td><td>Time Hierarchy Theorem</td><td><span class="muted">to be posted</span></td><td></td></tr>
+              <tr><td>9</td><td><span class="tba">TBA</span></td><td>The class NP: certificates and verifiers</td><td><span class="muted">to be posted</span></td><td></td></tr>
+              <tr><td>10</td><td><span class="tba">TBA</span></td><td>Polynomial-time reductions, NP-hardness, and NP-completeness</td><td><span class="muted">to be posted</span></td><td></td></tr>
+              <tr><td>11</td><td><span class="tba">TBA</span></td><td>Cook&ndash;Levin Theorem: SAT is NP-complete</td><td><span class="muted">to be posted</span></td><td></td></tr>
+              <tr><td>12</td><td><span class="tba">TBA</span></td><td>Space complexity and PSPACE</td><td><span class="muted">to be posted</span></td><td></td></tr>
+              <tr><td>13</td><td><span class="tba">TBA</span></td><td>Hierarchy theorems for time and space</td><td><span class="muted">to be posted</span></td><td></td></tr>
+              <tr><td>14</td><td><span class="tba">TBA</span></td><td>Savitch&rsquo;s Theorem</td><td><span class="muted">to be posted</span></td><td></td></tr>
+              <tr><td>15</td><td><span class="tba">TBA</span></td><td>Logarithmic space</td><td><span class="muted">to be posted</span></td><td></td></tr>
+              <tr><td>16</td><td><span class="tba">TBA</span></td><td>Sublogarithmic space</td><td><span class="muted">to be posted</span></td><td></td></tr>
+              <tr><td>17</td><td><span class="tba">TBA</span></td><td>Constant-space computation: finite automata; comparison with context-free grammars and pushdown automata</td><td><span class="muted">to be posted</span></td><td></td></tr>
+              <tr><td>18</td><td><span class="tba">TBA</span></td><td>Fine-grained complexity I</td><td><span class="muted">to be posted</span></td><td></td></tr>
+              <tr><td>19</td><td><span class="tba">TBA</span></td><td>Fine-grained complexity II</td><td><span class="muted">to be posted</span></td><td></td></tr>
+              <tr><td>20</td><td><span class="tba">TBA</span></td><td>Cryptographic applications of lower bounds I</td><td><span class="muted">to be posted</span></td><td></td></tr>
+              <tr><td>21</td><td><span class="tba">TBA</span></td><td>Cryptographic applications of lower bounds II</td><td><span class="muted">to be posted</span></td><td></td></tr>
+              <tr><td>&ast;</td><td><span class="tba">TBA</span></td><td>Additional topics, review, and assessment meetings</td><td><span class="muted">to be announced</span></td><td><span class="muted">to be announced</span></td></tr>
+            </tbody>
+          </table>
+        </div>
 
-        <p>I get 10 times more traffic from <a href="http://google.com/" title="Google">Google</a> than from<br>
-        <a href="http://search.yahoo.com/" title="Yahoo Search">Yahoo</a> or <a href="http://search.msn.com/" title="MSN Search">MSN</a>.</p>
+        <h2 id="resources">Resources</h2>
+        <p>
+          There is no required textbook. The following books, notes, and surveys are optional references that approach the material from complementary viewpoints.
+        </p>
+
+        <h3>Further Reading</h3>
+        <div class="table-scroll">
+          <table class="reference-table">
+            <tbody>
+              <tr>
+                <th scope="row">S12</th>
+                <td>Michael Sipser, <a href="https://math.mit.edu/~sipser/book.html"><em>Introduction to the Theory of Computation</em>, 3rd edition</a>.</td>
+              </tr>
+              <tr>
+                <th scope="row">B</th>
+                <td>Boaz Barak, <a href="https://introtcs.org/"><em>Introduction to Theoretical Computer Science</em></a> (freely available online).</td>
+              </tr>
+              <tr>
+                <th scope="row">AB09</th>
+                <td>Sanjeev Arora and Boaz Barak, <a href="https://theory.cs.princeton.edu/complexity/"><em>Computational Complexity: A Modern Approach</em></a>.</td>
+              </tr>
+              <tr>
+                <th scope="row">VW18</th>
+                <td>Virginia Vassilevska Williams, <a href="https://people.csail.mit.edu/virgi/eccentri.pdf"><em>On Some Fine-Grained Questions in Algorithms and Complexity</em></a>.</td>
+              </tr>
+              <tr>
+                <th scope="row">G01/04</th>
+                <td>Oded Goldreich, <a href="https://www.wisdom.weizmann.ac.il/~oded/foc.html"><em>Foundations of Cryptography</em></a>, Volumes I and II.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Bibliography</h3>
+        <p>This short list collects some foundational references connected to the lectures. It will be expanded during the term.</p>
+        <div class="table-scroll">
+          <table class="reference-table">
+            <tbody>
+              <tr>
+                <th scope="row">T36</th>
+                <td>Alan Turing, <a href="https://doi.org/10.1112/plms/s2-42.1.230">On Computable Numbers, with an Application to the Entscheidungsproblem</a>, 1936.</td>
+              </tr>
+              <tr>
+                <th scope="row">C71</th>
+                <td>Stephen Cook, <a href="https://doi.org/10.1145/800157.805047">The Complexity of Theorem-Proving Procedures</a>, STOC 1971.</td>
+              </tr>
+              <tr>
+                <th scope="row">S70</th>
+                <td>Walter Savitch, <a href="https://doi.org/10.1016/S0022-0000(70)80006-X">Relationships Between Nondeterministic and Deterministic Tape Complexities</a>, JCSS 1970.</td>
+              </tr>
+              <tr>
+                <th scope="row">IPZ01</th>
+                <td>Russell Impagliazzo, Ramamohan Paturi, and Francis Zane, <a href="https://doi.org/10.1006/jcss.2001.1774">Which Problems Have Strongly Exponential Complexity?</a>, JCSS 2001.</td>
+              </tr>
+              <tr>
+                <th scope="row">GGM86</th>
+                <td>Oded Goldreich, Shafi Goldwasser, and Silvio Micali, <a href="https://doi.org/10.1145/6490.6503">How to Construct Random Functions</a>, JACM 1986.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Similar Courses</h3>
+        <p>Here are several courses with closely related material and useful lecture notes or slides:</p>
+        <ul class="compact-list">
+          <li><a href="https://cs.uwaterloo.ca/~eblais/cs365/">CS 365: Models of Computation, Winter 2026</a>, Eric Blais, University of Waterloo.</li>
+          <li><a href="https://williamhoza.com/teaching/autumn2025-intro-to-complexity/">Introduction to Complexity Theory, Autumn 2025</a>, William Hoza, University of Chicago.</li>
+          <li><a href="https://ocw.mit.edu/courses/6-045j-automata-computability-and-complexity-spring-2011/">6.045J: Automata, Computability, and Complexity, Spring 2011</a>, Scott Aaronson, MIT OpenCourseWare.</li>
+          <li><a href="https://cs121.boazbarak.org/">CS 121: Introduction to Theoretical Computer Science</a>, Boaz Barak, Harvard University.</li>
+        </ul>
+
+        <p class="last-updated">Last updated: August 13, 2026.</p>
       </section>
-<footer>
-        <p>This project is maintained by <a href="http://github.com/orderedlist">Steve Smith</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer> -->
     </div>
-    <script src="javascripts/scale.fix.js"></script>
+    <script src="../../javascripts/scale.fix.js"></script>
   </body>
 </html>
