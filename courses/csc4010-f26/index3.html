@@ -4,16 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>CSC4010: Introduction to Theoretical Computer Science — Fall 2026</title>
-    <meta
-      name="description"
-      content="Course webpage for CSC4010: Introduction to Theoretical Computer Science at CUHK-Shenzhen, Fall 2026."
-    >
+    <meta name="description" content="Course webpage for CSC4010: Introduction to Theoretical Computer Science at CUHK-Shenzhen, Fall 2026.">
 
+    <!-- Reuse the same stylesheets as the personal homepage. -->
     <link rel="stylesheet" href="../../stylesheets/styles.css">
     <link rel="stylesheet" href="../../stylesheets/pygment_trac.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Course-page additions: a centered single-column layout and responsive tables. -->
     <style>
+      /* Keep the course page typography stable across preview and deployment environments. */
       body {
         font-family: Arial, Helvetica, sans-serif;
         font-variant-numeric: normal;
@@ -120,13 +120,76 @@
         width: 120px;
       }
 
-      .schedule tr.module-computability > td,
+      /* Calendar module colours */
+      .schedule tr.module-computability > td {
+        background-color: #f8f8f8;
+      }
+
+      .schedule tr.module-complexity > td {
+background-color: #ffffff;
+      }
+
       .schedule tr.module-fine-grained > td {
         background-color: #f8f8f8;
       }
 
-      .schedule tr.module-complexity > td,
       .schedule tr.module-crypto > td {
+        background-color: #ffffff;
+      }
+
+      .schedule tr.module-computability:hover > td {
+        background-color: #f8f8f8;
+      }
+
+      .schedule tr.module-complexity:hover > td {
+        background-color: #ffffff;
+      }
+
+      .schedule tr.module-fine-grained:hover > td {
+        background-color: #f8f8f8;
+      }
+
+      .schedule tr.module-crypto:hover > td {
+        background-color: #ffffff;
+      }
+
+      /* Map-style calendar legend */
+      .calendar-legend {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+        gap: 8px 20px;
+        margin: 0 0 14px;
+      }
+
+      .calendar-legend-item {
+        align-items: center;
+        display: flex;
+        font-size: 13px;
+        gap: 8px;
+      }
+
+      .calendar-legend-colour {
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 2px;
+        display: inline-block;
+        flex: 0 0 14px;
+        height: 14px;
+        width: 14px;
+      }
+
+      .calendar-legend .computability {
+        background-color: #f8f8f8;
+      }
+
+      .calendar-legend .complexity {
+        background-color: #ffffff;
+      }
+
+      .calendar-legend .fine-grained {
+        background-color: #f8f8f8;
+      }
+
+      .calendar-legend .crypto {
         background-color: #ffffff;
       }
 
@@ -146,13 +209,6 @@
       .reference-table th {
         width: 70px;
         vertical-align: top;
-      }
-
-      .grading-subrow td {
-        background: #f8f8f8;
-        color: #666;
-        font-size: 14px;
-        padding-left: 24px;
       }
 
       .last-updated {
@@ -180,6 +236,10 @@
 
         .reference-table th {
           width: 55px;
+        }
+
+        .calendar-legend {
+          grid-template-columns: 1fr;
         }
 
         .schedule {
@@ -416,39 +476,23 @@
           final examination. There will be 4 in-class tests, and the test with the lowest score will
           be dropped. Tests will be based on periodic assignments, which won't be evaluated but
           you're encouraged to discuss your solutions in office hours and in tutorials. The dates
-          below are tentative and may be adjusted with advance notice.
+          for all exams and tests will be announced in advance.
         </p>
 
-        <table class="grading-table">
+        <table>
           <tbody>
             <tr>
               <th scope="row">In-class tests (based on assignments)</th>
               <td>40%</td>
+ <td> Test 1: 21/9</td>
             </tr>
-            <tr class="grading-subrow">
-              <td colspan="2">
-                <strong>Test dates:</strong> 21/9, 12/10, 28/10, 23/11
-              </td>
-            </tr>
-
             <tr>
               <th scope="row">Midterm examination</th>
               <td>30%</td>
             </tr>
-            <tr class="grading-subrow">
-              <td colspan="2">
-                <strong>Midterm date:</strong> 2/11
-              </td>
-            </tr>
-
             <tr>
               <th scope="row">Final examination</th>
               <td>30%</td>
-            </tr>
-            <tr class="grading-subrow">
-              <td colspan="2">
-                <strong>Final-exam date:</strong> <span class="tba">TBA</span>
-              </td>
             </tr>
           </tbody>
         </table>
@@ -459,6 +503,24 @@
           The calendar is tentative. Dates, lecture materials, assignment releases, and assessment
           information will be added as the term progresses.
         </p>
+
+<!--        <div class="calendar-legend" aria-label="Calendar module colour legend">
+          <div class="calendar-legend-item">
+            <span class="calendar-legend-colour computability" aria-hidden="true"></span>
+          </div>
+
+          <div class="calendar-legend-item">
+            <span class="calendar-legend-colour complexity" aria-hidden="true"></span>
+          </div>
+
+          <div class="calendar-legend-item">
+            <span class="calendar-legend-colour fine-grained" aria-hidden="true"></span>
+          </div>
+
+          <div class="calendar-legend-item">
+            <span class="calendar-legend-colour crypto" aria-hidden="true"></span>
+          </div>
+        </div> -->
 
         <div class="table-scroll">
           <table class="schedule">
@@ -472,35 +534,232 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="module-computability"><td>L1</td><td>7/9</td><td>Course Outline and Introduction</td><td></td><td></td></tr>
-              <tr class="module-computability"><td>T1</td><td>8/9</td><td>Countability and Uncountability</td><td></td><td></td></tr>
-              <tr class="module-computability"><td>L2</td><td>9/9</td><td>Computational Problems as Languages</td><td></td><td></td></tr>
-              <tr class="module-computability"><td>L3</td><td>14/9</td><td>Turing Machines as Algorithms; Decidable Languages; Recognizable Languages</td><td></td><td></td></tr>
-              <tr class="module-computability"><td>L4</td><td>16/9</td><td>Formal Definition of Turing Machines; More Decidable and Recognizable Languages; Properties of Decidable/Recognizable Languages</td><td></td><td></td></tr>
-              <tr class="module-computability"><td>L5</td><td>21/9</td><td>Church-Turing Thesis: Motivation via variants of TMs, Statement of Church-Turing Thesis</td><td></td><td></td></tr>
-              <tr class="module-computability"><td>L6</td><td>23/9</td><td>Universal Turing Machines; Undecidability</td><td></td><td></td></tr>
-              <tr class="module-computability"><td>L7</td><td>28/9</td><td>Proving Undecidability via Diagonalization</td><td></td><td></td></tr>
-              <tr class="module-computability"><td>L8</td><td>30/9</td><td>Proving Undecidability via Reductions</td><td></td><td></td></tr>
-              <tr class="module-computability"><td>L9</td><td>12/10</td><td>Recognizable and Unrecognizable Languages</td><td></td><td></td></tr>
-              <tr class="module-complexity"><td>L10</td><td>14/10</td><td>Asymptotic Notation Refresher, Time Complexity</td><td></td><td></td></tr>
-              <tr class="module-complexity"><td>L11</td><td>19/10</td><td>Time Hierarchy Theorem</td><td></td><td></td></tr>
-              <tr class="module-complexity"><td>L12</td><td>21/10</td><td>P and NP</td><td></td><td></td></tr>
-              <tr class="module-complexity"><td>L13</td><td>26/10</td><td>Boolean Formulas and Satisfiability</td><td></td><td></td></tr>
-              <tr class="module-complexity"><td>L14</td><td>28/10</td><td>Cook-Levin Theorem: SAT is NP-Complete</td><td></td><td></td></tr>
-              <tr class="module-complexity"><td>L15</td><td>2/11</td><td><b>Midterm</b></td><td></td><td></td></tr>
-              <tr class="module-complexity"><td>L16</td><td>4/11</td><td>Space Complexity</td><td></td><td></td></tr>
-              <tr class="module-complexity"><td>L17</td><td>9/11</td><td>Time-Space Hierarchy</td><td></td><td></td></tr>
-              <tr class="module-complexity"><td>L18</td><td>11/11</td><td>Savitch's Theorem</td><td></td><td></td></tr>
-              <tr class="module-complexity"><td>L19</td><td>16/11</td><td>Logarithmic Space</td><td></td><td></td></tr>
-              <tr class="module-complexity"><td>L20</td><td>18/11</td><td>Sublogarithmic Space</td><td></td><td></td></tr>
-              <tr class="module-complexity"><td>L21</td><td>23/11</td><td>Constant Space Computation</td><td></td><td></td></tr>
-              <tr class="module-fine-grained"><td>L22</td><td>25/11</td><td>Fine-grained complexity I</td><td></td><td></td></tr>
-              <tr class="module-fine-grained"><td>L23</td><td>30/11</td><td>Fine-grained complexity II</td><td></td><td></td></tr>
-              <tr class="module-fine-grained"><td>L24</td><td>2/12</td><td>Fine-grained complexity III</td><td></td><td></td></tr>
-              <tr class="module-crypto"><td>L25</td><td>7/12</td><td>Using Lowerbounds for Cryptography I</td><td></td><td></td></tr>
-              <tr class="module-crypto"><td>L26</td><td>9/12</td><td>Cryptographic applications of lower bounds II</td><td></td><td></td></tr>
-              <tr class="module-crypto"><td>L27</td><td>14/12</td><td>Cryptographic applications of lower bounds III</td><td></td><td></td></tr>
-              <tr class="module-crypto"><td>L28</td><td>16/12</td><td>Review</td><td></td><td></td></tr>
+              <!-- Computability Theory: lectures 1–7 -->
+              <tr class="module-computability">
+                <td>L1</td>
+                <td>7/9</td>
+                <td>Course Outline and Introduction</td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+              <tr class="module-computability">
+                <td>T1</td>
+                <td>8/9</td>
+                <td>Countability and Uncountability</td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+              <tr class="module-computability">
+                <td>L2</td>
+                <td>9/9</td>
+                <td>Computational Problems as Languages</td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+              <tr class="module-computability">
+                <td>L3</td>
+                <td>14/9</td>
+                <td>Turing Machines as Algorithms; Decidable Languages; Recognizable Languages</td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+              <tr class="module-computability">
+                <td>L4</td>
+                <td>16/9</td>
+                <td>
+                  Formal Definition of Turing Machines; More Decidable and Recognizable Languages;
+                  Properties of Decidable/Recognizable Languages
+                </td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+              <tr class="module-computability">
+                <td>L5</td>
+                <td>21/9</td>
+                <td>Church-Turing Thesis: Motivation via variants of TMs, Statement of Church-Turing Thesis</td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+              <tr class="module-computability">
+                <td>L6</td>
+                <td>23/9</td>
+                <td>Universal Turing Machines; Undecidability</td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+              <tr class="module-computability">
+                <td>L7</td>
+                <td>28/9</td>
+                <td>Proving Undecidability via Diagonalization</td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+
+              <!-- Complexity Theory: lectures 8–17 -->
+              <tr class="module-computability">
+                <td>L8</td>
+                <td>30/9</td>
+                <td>Proving Undecidability via Reductions</td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+              <tr class="module-computability">
+                <td>L9</td>
+                <td>12/10</td>
+                <td>Recognizable and Unrecognizable Languages</td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+              <tr class="module-complexity">
+                <td>L10</td>
+                <td>14/10</td>
+                <td>Asymptotic Notation Refresher, Time Complexity</td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+              <tr class="module-complexity">
+                <td>L11</td>
+                <td>19/10</td>
+                <td>Time Hierarchy Theorem</td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+              <tr class="module-complexity">
+                <td>L12</td>
+                <td>21/10</td>
+                <td>P and NP</td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+              <tr class="module-complexity">
+                <td>L13</td>
+                <td>26/10</td>
+                <td>Boolean Formulas and Satisfiability</td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+              <tr class="module-complexity">
+                <td>L14</td>
+                <td>28/10</td>
+                <td>Cook-Levin Theorem: SAT is NP-Complete</td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+              <tr class="module-complexity">
+                <td>L15</td>
+                <td>2/11</td>
+                <td><b>Midterm</b></td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+              <tr class="module-complexity">
+                <td>L16</td>
+                <td>4/11</td>
+                <td>Space Complexity</td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+              <tr class="module-complexity">
+                <td>L17</td>
+                <td>9/11</td>
+                <td>
+                  Time-Space Hierarchy
+                </td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+               <tr class="module-complexity">
+                <td>L18</td>
+                <td>11/11</td>
+                <td>
+                  Savitch's Theorem
+                </td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+<tr class="module-complexity">
+                <td>L19</td>
+                <td>16/11</td>
+                <td>
+                  Logarithmic Space
+                </td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+<tr class="module-complexity">
+                <td>L20</td>
+                <td>18/11</td>
+                <td>
+                  Sublogarithmic Space
+                </td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+<tr class="module-complexity">
+                <td>L21</td>
+                <td>23/11</td>
+                <td>
+                  Constant Space Computation
+                </td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+
+
+
+
+              <!-- Fine-grained Complexity: lectures 18–19 -->
+              <tr class="module-fine-grained">
+                <td>L22</td>
+                <td>25/11</td>
+                <td>Fine-grained complexity I</td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+              <tr class="module-fine-grained">
+                <td>L23</td>
+                <td>30/11</td>
+                <td>Fine-grained complexity II</td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+              <tr class="module-fine-grained">
+                <td>L24</td>
+                <td>2/12</td>
+                <td>Fine-grained complexity III</td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+              <!-- Cryptographic Applications: lectures 20–21 -->
+              <tr class="module-crypto">
+                <td>L25</td>
+                <td>7/12</td>
+                <td>Using Lowerbounds for Cryptography I</td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+              <tr class="module-crypto">
+                <td>L26</td>
+                <td>9/12</td>
+                <td>Cryptographic applications of lower bounds II</td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+<tr class="module-crypto">
+                <td>L27</td>
+                <td>14/12</td>
+                <td>Cryptographic applications of lower bounds III</td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+<tr class="module-crypto">
+                <td>L28</td>
+                <td>16/12</td>
+                <td>Review</td>
+                <td><span class="muted"></span></td>
+                <td></td>
+              </tr>
+
             </tbody>
           </table>
         </div>
@@ -524,19 +783,32 @@
             <tbody>
               <tr>
                 <th scope="row">Wat26</th>
-                <td>Thomas Watson, <a href="https://complexityincs.com"><em>Complexity in Computer Science</em></a>.</td>
+                <td>
+                  Thomas Watson,
+                  <a href="https://complexityincs.com"><em>Complexity in Computer Science</em></a>.
+                </td>
               </tr>
               <tr>
                 <th scope="row">B</th>
-                <td>Boaz Barak, <a href="https://introtcs.org/"><em>Introduction to Theoretical Computer Science</em></a> (freely available online).</td>
+                <td>
+                  Boaz Barak,
+                  <a href="https://introtcs.org/"><em>Introduction to Theoretical Computer Science</em></a>
+                  (freely available online).
+                </td>
               </tr>
               <tr>
                 <th scope="row">AB09</th>
-                <td>Sanjeev Arora and Boaz Barak, <a href="https://theory.cs.princeton.edu/complexity/"><em>Computational Complexity: A Modern Approach</em></a>.</td>
+                <td>
+                  Sanjeev Arora and Boaz Barak,
+                  <a href="https://theory.cs.princeton.edu/complexity/"><em>Computational Complexity: A Modern Approach</em></a>.
+                </td>
               </tr>
               <tr>
                 <th scope="row">Vio26</th>
-                <td>Emanuel Viola, <a href="https://www.ccs.neu.edu/home/viola/papers/moti.pdf"><em>Mathematics of The Impossible</em></a>.</td>
+                <td>
+                  Emanuel Viola,
+                  <a href="https://www.ccs.neu.edu/home/viola/papers/moti.pdf"><em>Mathematics of The Impossible</em></a>.
+                </td>
               </tr>
             </tbody>
           </table>
@@ -551,7 +823,8 @@
 
         <div class="table-scroll">
           <table class="reference-table">
-            <tbody></tbody>
+            <tbody>
+            </tbody>
           </table>
         </div>
 
