@@ -3,7 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>CSC4010: Introduction to Theoretical Computer Science — Fall 2026</title>
+
+    <title>
+      CSC4010: Introduction to Theoretical Computer Science — Fall 2026
+    </title>
+
     <meta
       name="description"
       content="Course webpage for CSC4010: Introduction to Theoretical Computer Science at CUHK-Shenzhen, Fall 2026."
@@ -11,31 +15,82 @@
 
     <link rel="stylesheet" href="../../stylesheets/styles.css">
     <link rel="stylesheet" href="../../stylesheets/pygment_trac.css">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <style>
+      /*
+       * Page layout
+       *
+       * These rules override the default layout in styles.css,
+       * which is responsible for the large margins.
+       */
+
+      html,
       body {
+        width: 100%;
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        box-sizing: border-box;
+        padding: 24px 32px 40px;
+
         font-family: Arial, Helvetica, sans-serif;
         font-variant-numeric: normal;
         font-feature-settings: normal;
         letter-spacing: normal;
       }
 
-      h1, h2, h3, h4, h5, h6, th, td, p, li, a {
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      th,
+      td,
+      p,
+      li,
+      a {
         font-family: inherit;
         letter-spacing: normal;
       }
 
       .wrapper {
-        width: auto;
-        max-width: 980px;
-        margin: 0 auto;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 0;
       }
 
       section {
-        width: auto;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 0 0 40px;
         float: none;
-        padding-bottom: 50px;
+        border: 0;
+      }
+
+      /*
+       * General content
+       */
+
+      p {
+        max-width: none;
+      }
+
+      h1 {
+        margin-top: 0;
       }
 
       .course-title {
@@ -71,17 +126,30 @@
         margin-bottom: 20px;
       }
 
+      /*
+       * Tables
+       */
+
+      table {
+        width: 100%;
+        max-width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        vertical-align: top;
+      }
+
       .table-scroll {
+        width: 100%;
+        max-width: 100%;
         overflow-x: auto;
         margin-bottom: 20px;
       }
 
       .table-scroll table {
         margin-bottom: 0;
-      }
-
-      .schedule {
-        min-width: 760px;
       }
 
       .course-info th {
@@ -94,30 +162,62 @@
         vertical-align: top;
       }
 
+      .reference-table th {
+        width: 70px;
+        vertical-align: top;
+      }
+
+      .grading-table th {
+        width: 75%;
+        text-align: left;
+      }
+
+      .grading-table td {
+        width: 25%;
+        text-align: right;
+      }
+
+      /*
+       * Calendar
+       */
+
+      .schedule {
+        width: 100%;
+        min-width: 0;
+        table-layout: fixed;
+      }
+
       .schedule th,
       .schedule td {
         vertical-align: top;
+        overflow-wrap: anywhere;
+        word-break: normal;
       }
 
       .schedule th:nth-child(1),
       .schedule td:nth-child(1) {
-        width: 45px;
+        width: 5%;
         text-align: center;
       }
 
       .schedule th:nth-child(2),
       .schedule td:nth-child(2) {
-        width: 105px;
+        width: 9%;
+      }
+
+      .schedule th:nth-child(3),
+      .schedule td:nth-child(3) {
+        width: 31%;
       }
 
       .schedule th:nth-child(4),
       .schedule td:nth-child(4) {
-        width: 115px;
+        width: 35%;
       }
 
       .schedule th:nth-child(5),
       .schedule td:nth-child(5) {
-        width: 120px;
+        width: 20%;
       }
 
       .schedule tr.module-computability > td,
@@ -129,6 +229,10 @@
       .schedule tr.module-crypto > td {
         background-color: #ffffff;
       }
+
+      /*
+       * Other styles
+       */
 
       .tba {
         color: #8a6d3b;
@@ -143,16 +247,12 @@
         margin-bottom: 6px;
       }
 
-      .reference-table th {
-        width: 70px;
-        vertical-align: top;
-      }
-
       .grading-subrow td {
         background: #f8f8f8;
         color: #666;
         font-size: 14px;
         padding-left: 24px;
+        text-align: left;
       }
 
       .last-updated {
@@ -161,15 +261,25 @@
         margin-top: 30px;
       }
 
-      @media print, screen and (max-width: 960px) {
+      /*
+       * Tablet and mobile layout
+       */
+
+      @media screen and (max-width: 960px) {
+        body {
+          padding: 20px 24px 32px;
+        }
+
         section {
-          border: 0;
-          margin: 0;
-          padding: 0 0 50px;
+          padding-bottom: 32px;
         }
       }
 
-      @media print, screen and (max-width: 720px) {
+      @media screen and (max-width: 720px) {
+        body {
+          padding: 16px;
+        }
+
         .course-info th {
           width: 105px;
         }
@@ -182,8 +292,13 @@
           width: 55px;
         }
 
+        /*
+         * Convert the calendar table into stacked cards.
+         */
+
         .schedule {
           min-width: 0;
+          table-layout: auto;
         }
 
         .schedule thead {
@@ -196,7 +311,6 @@
         .schedule td {
           display: block;
           width: 100%;
-          box-sizing: border-box;
         }
 
         .schedule tr {
@@ -205,7 +319,6 @@
         }
 
         .schedule td {
-          border-bottom: 0;
           min-height: 24px;
           padding: 2px 4px 2px 95px;
           position: relative;
@@ -235,15 +348,41 @@
         }
 
         .schedule td:nth-child(4)::before {
-          content: "Materials";
+          content: "References";
         }
 
         .schedule td:nth-child(5)::before {
-          content: "Assessments";
+          content: "Problem Sets";
         }
 
         .schedule td:empty {
           display: none;
+        }
+      }
+
+      /*
+       * Print layout
+       */
+
+      @media print {
+        @page {
+          margin: 0.5in;
+        }
+
+        body {
+          padding: 0;
+        }
+
+        .course-nav {
+          display: none;
+        }
+
+        section {
+          padding-bottom: 0;
+        }
+
+        .schedule {
+          table-layout: auto;
         }
       }
     </style>
@@ -252,19 +391,29 @@
   <body>
     <div class="wrapper">
       <section>
-        <h1 class="course-title">CSC4010: Introduction to Theoretical Computer Science</h1>
-        <p class="course-term"><strong>Fall 2026</strong> &middot; CUHK-Shenzhen</p>
+        <h1 class="course-title">
+          CSC4010: Introduction to Theoretical Computer Science
+        </h1>
+
+        <p class="course-term">
+          <strong>Fall 2026</strong> &middot; CUHK-Shenzhen
+        </p>
 
         <nav class="course-nav" aria-label="Course page sections">
-          <a href="#course-information">Course information</a><span>&middot;</span>
-          <a href="#topics">Topics</a><span>&middot;</span>
-          <a href="#grading">Grading</a><span>&middot;</span>
-          <a href="#calendar">Calendar</a><span>&middot;</span>
+          <a href="#course-information">Course information</a>
+          <span>&middot;</span>
+          <a href="#topics">Topics</a>
+          <span>&middot;</span>
+          <a href="#grading">Grading</a>
+          <span>&middot;</span>
+          <a href="#calendar">Calendar</a>
+          <span>&middot;</span>
           <a href="#resources">Resources</a>
         </nav>
 
         <div class="notice">
-          On 8/9/26, instead of having a tutorial, we will continue our discussion on Countability/Uncountability.
+          On 8/9/26, instead of having a tutorial, we will continue our
+          discussion on Countability/Uncountability.
         </div>
 
         <h2 id="course-information">Course Information</h2>
@@ -274,60 +423,89 @@
             <tbody>
               <tr>
                 <th scope="row">Lectures</th>
-                <td>MW 8:30 to 9:50 in Administration Building E206</td>
+                <td>
+                  MW 8:30 to 9:50 in Administration Building E206
+                </td>
               </tr>
+
               <tr>
                 <th scope="row">Tutorial</th>
-                <td>Tue 19:00 to 19:50 in Teaching D, Room 307</td>
+                <td>
+                  Tue 19:00 to 19:50 in Teaching D, Room 307
+                </td>
               </tr>
+
               <tr>
                 <th scope="row">Instructor</th>
                 <td>
                   <a href="../../">Aditi Dudeja</a><br>
                   Email: aditidudeja@cuhk.edu.cn<br>
-                  Office hours: Monday, Tuesday: 4pm - 5pm in DY 504b and Wednesday,
-                  Thursday: 4pm - 5pm online (on
-                  <a href="https://cuhk-edu-cn.zoom.us/j/2261666238?pwd=ueKRq2gqkGZDeUZLqFZRD7KxjiMuFN.1">Zoom</a>)
+                  Office hours: Monday, Tuesday: 4pm - 5pm in DY 504b and
+                  Wednesday, Thursday: 4pm - 5pm online
+                  (on
+                  <a href="https://cuhk-edu-cn.zoom.us/j/2261666238?pwd=ueKRq2gqkGZDeUZLqFZRD7KxjiMuFN.1">
+                    Zoom
+                  </a>)
                 </td>
               </tr>
+
               <tr>
                 <th scope="row">Teaching Assistant</th>
-                <td>ZHU Tianran 
-		<br> Email: tianranzhu@link.cuhk.edu.cn
-		<br>Office hours: Monday: 4-5pm in Zhi Xin Building, Room 408, Seat 49 (ZX 408-49) and Wednesday: 4-5pm online (on <a href="https://cuhk-edu-cn.zoom.us/j/98182963372?pwd=PltBoXMzyG55ozsRCZOBALTaH9WoAT.1">Zoom </a>)</td>
-
+                <td>
+                  ZHU Tianran<br>
+                  Email: tianranzhu@link.cuhk.edu.cn<br>
+                  Office hours: Monday: 4-5pm in Zhi Xin Building,
+                  Room 408, Seat 49 (ZX 408-49) and Wednesday: 4-5pm online
+                  (on
+                  <a href="https://cuhk-edu-cn.zoom.us/j/98182963372?pwd=PltBoXMzyG55ozsRCZOBALTaH9WoAT.1">
+                    Zoom
+                  </a>)
+                </td>
               </tr>
+
               <tr>
                 <th scope="row">USTF</th>
-                <td>SUN Youran
-<br>Email: youransun@link.cuhk.edu.cn
-<br> Office hours: Monday, Thursday: 1-2pm online (on <a href="https://cuhk-edu-cn.zoom.us/j/95301665845">Zoom</a>)
-</td>
+                <td>
+                  SUN Youran<br>
+                  Email: youransun@link.cuhk.edu.cn<br>
+                  Office hours: Monday, Thursday: 1-2pm online
+                  (on
+                  <a href="https://cuhk-edu-cn.zoom.us/j/95301665845">
+                    Zoom
+                  </a>)
+                </td>
               </tr>
+
               <tr>
                 <th scope="row">Expected background</th>
                 <td>
-                  Official pre-requisite is CSC3001. Official co-requisite is CSC4120.<br>
-                  If you don't satisfy these requirements, but are comfortable with proofs and want
-                  to enroll, please email the instructor.
+                  Official pre-requisite is CSC3001. Official co-requisite is
+                  CSC4120.<br>
+                  If you don't satisfy these requirements, but are comfortable
+                  with proofs and want to enroll, please email the instructor.
                 </td>
               </tr>
+
               <tr>
                 <th scope="row">Textbook</th>
                 <td>
-                  Introduction to the Theory of Computing, 3rd Edition by Michael Sipser.
-                  ISBN-13: 9780357670583.<br>
+                  Introduction to the Theory of Computing, 3rd Edition by
+                  Michael Sipser. ISBN-13: 9780357670583.<br>
                   The book is on reserve in the CUHK-Shenzhen Library.
                 </td>
               </tr>
+
               <tr>
                 <th scope="row">Course outline</th>
                 <td>
-                  <a href="https://www.cuhk.edu.cn/en/course/18543">Official course description</a>.<br>
+                  <a href="https://www.cuhk.edu.cn/en/course/18543">
+                    Official course description
+                  </a>.<br>
                   <a href="Syllabuscsc4010-2.pdf">Syllabus</a><br>
                   A lecture-by-lecture guideline is given below.
                 </td>
               </tr>
+
               <tr>
                 <th scope="row">Communication</th>
                 <td>
@@ -342,31 +520,42 @@
         <h2 id="topics">Topics</h2>
 
         <p>
-          The question of which tasks can be performed efficiently is central to human experience,
-          since time and other resources are always in shortage. The field of theoretical computer
-          science studies the effects of limited resources: How does restricting the time, memory,
-          and other resources available to algorithms affect their ability to perform tasks? This
-          question is formulated and studied as generally as possible and with mathematical rigor,
-          using well-defined abstract notions of algorithms, tasks, and resources.
+          The question of which tasks can be performed efficiently is central
+          to human experience, since time and other resources are always in
+          shortage. The field of theoretical computer science studies the
+          effects of limited resources: How does restricting the time, memory,
+          and other resources available to algorithms affect their ability to
+          perform tasks? This question is formulated and studied as generally
+          as possible and with mathematical rigor, using well-defined abstract
+          notions of algorithms, tasks, and resources.
         </p>
 
         <p>
-          This course teaches how to mathematically model general computation and how to analyse
-          models. The main conceptual focus of the course is impossibility results (i.e. lower
-          bounds), which rigorously prove limits for models of computation. A secondary focus is
-          utilizing impossibility results for productive purposes, i.e. building algorithms and
-          protocols from lower bounds. The key points students can take from the course are:
+          This course teaches how to mathematically model general computation
+          and how to analyse models. The main conceptual focus of the course is
+          impossibility results (i.e. lower bounds), which rigorously prove
+          limits for models of computation. A secondary focus is utilizing
+          impossibility results for productive purposes, i.e. building
+          algorithms and protocols from lower bounds. The key points students
+          can take from the course are:
         </p>
 
         <ol class="compact-list">
-          <li>We can abstract computation into mathematical models, and prove impossibility results for these models.</li>
-          <li>This abstraction is relevant to real-world scenarios.</li>
-          <li>Impossibility results can be leveraged to build useful algorithms.</li>
+          <li>
+            We can abstract computation into mathematical models, and prove
+            impossibility results for these models.
+          </li>
+          <li>
+            This abstraction is relevant to real-world scenarios.
+          </li>
+          <li>
+            Impossibility results can be leveraged to build useful algorithms.
+          </li>
         </ol>
 
         <p>
-          The course will have four (planned) modules. The following list is tentative and may be
-          updated as the semester progresses.
+          The course will have four (planned) modules. The following list is
+          tentative and may be updated as the semester progresses.
         </p>
 
         <div class="table-scroll">
@@ -375,40 +564,52 @@
               <tr>
                 <th scope="row">Computability Theory</th>
                 <td>
-                  In this module, we will learn how to mathematically model computational problems
-                  and models. We will study Turing machines, which are arguably, the right model to
-                  capture computation. We will ask which problems are computable by a Turing Machine
-                  given an arbitrarily large (but finite) number of resources. We will show certain
-                  problems are uncomputable. An example of such a problem is the Halting Problem.
+                  In this module, we will learn how to mathematically model
+                  computational problems and models. We will study Turing
+                  machines, which are arguably, the right model to capture
+                  computation. We will ask which problems are computable by a
+                  Turing Machine given an arbitrarily large (but finite) number
+                  of resources. We will show certain problems are uncomputable.
+                  An example of such a problem is the Halting Problem.
                 </td>
               </tr>
+
               <tr>
                 <th scope="row">Complexity Theory</th>
                 <td>
-                  The distinction between “computable” and “uncomputable” problems is crude, and
-                  provides only limited information as to which problems can actually be computed,
-                  because it does not take into account resource limitations. Specifically, even
-                  computable problems may be beyond reach of any real-world computational procedure,
-                  whose resources are inherently limited. In this model, we will obtain more
-                  information about realistically solvable problems by analyzing resource-bounded
-                  models. The resources we will focus on are time and memory. We will show (among
-                  other things) that given more time, a Turing machine can solve more problems.
+                  The distinction between “computable” and “uncomputable”
+                  problems is crude, and provides only limited information as
+                  to which problems can actually be computed, because it does
+                  not take into account resource limitations. Specifically, even
+                  computable problems may be beyond reach of any real-world
+                  computational procedure, whose resources are inherently
+                  limited. In this model, we will obtain more information about
+                  realistically solvable problems by analyzing resource-bounded
+                  models. The resources we will focus on are time and memory. We
+                  will show (among other things) that given more time, a Turing
+                  machine can solve more problems.
                 </td>
               </tr>
+
               <tr>
                 <th scope="row">Fine-grained Complexity</th>
                 <td>
-                  This area of research attempts to discover the precise time complexity of solving
-                  specific interesting problems. For example, given a set of vectors, can we find a
-                  pair of orthogonal vectors faster than brute-force?
+                  This area of research attempts to discover the precise time
+                  complexity of solving specific interesting problems. For
+                  example, given a set of vectors, can we find a pair of
+                  orthogonal vectors faster than brute-force?
                 </td>
               </tr>
+
               <tr>
-                <th scope="row">Cryptographic Applications of Lower Bounds</th>
+                <th scope="row">
+                  Cryptographic Applications of Lower Bounds
+                </th>
                 <td>
-                  In this module, we will learn that the lower bounds we have proved so far are
-                  useful in practice and can be leveraged to build algorithms and cryptographic
-                  protocols for safe computation.
+                  In this module, we will learn that the lower bounds we have
+                  proved so far are useful in practice and can be leveraged to
+                  build algorithms and cryptographic protocols for safe
+                  computation.
                 </td>
               </tr>
             </tbody>
@@ -418,22 +619,27 @@
         <h2 id="grading">Grading</h2>
 
         <p>
-          The course evaluation will use proof-based in-class tests, a midterm examination, and a
-          final examination. There will be 4 in-class tests, and the test with the lowest score will
-          be dropped. Tests will be based on periodic assignments, which won't be evaluated but
-          you're encouraged to discuss your solutions in office hours and in tutorials. The dates
-          below are tentative and may be adjusted with advance notice.
+          The course evaluation will use proof-based in-class tests, a midterm
+          examination, and a final examination. There will be 4 in-class tests,
+          and the test with the lowest score will be dropped. Tests will be
+          based on periodic assignments, which won't be evaluated but you're
+          encouraged to discuss your solutions in office hours and in tutorials.
+          The dates below are tentative and may be adjusted with advance notice.
         </p>
 
         <table class="grading-table">
           <tbody>
             <tr>
-              <th scope="row">In-class tests (based on assignments)</th>
+              <th scope="row">
+                In-class tests (based on assignments)
+              </th>
               <td>40%</td>
             </tr>
+
             <tr class="grading-subrow">
               <td colspan="2">
-                <strong>Test dates:</strong> 29/9/26, 27/10/26, 24/11/26, 15/12/26
+                <strong>Test dates:</strong>
+                29/9/26, 27/10/26, 24/11/26, 15/12/26
               </td>
             </tr>
 
@@ -441,6 +647,7 @@
               <th scope="row">Midterm examination</th>
               <td>30%</td>
             </tr>
+
             <tr class="grading-subrow">
               <td colspan="2">
                 <strong>Midterm date:</strong> 2/11/26
@@ -451,9 +658,11 @@
               <th scope="row">Final examination</th>
               <td>30%</td>
             </tr>
+
             <tr class="grading-subrow">
               <td colspan="2">
-                <strong>Final-exam date:</strong> <span class="tba">TBA</span>
+                <strong>Final-exam date:</strong>
+                <span class="tba">TBA</span>
               </td>
             </tr>
           </tbody>
@@ -462,8 +671,9 @@
         <h2 id="calendar">Course Calendar</h2>
 
         <p>
-          The calendar is tentative. Dates, lecture materials, assignment releases, and assessment
-          information will be added as the term progresses.
+          The calendar is tentative. Dates, lecture materials, assignment
+          releases, and assessment information will be added as the term
+          progresses.
         </p>
 
         <div class="table-scroll">
@@ -477,36 +687,260 @@
                 <th scope="col">Problem Sets</th>
               </tr>
             </thead>
+
             <tbody>
-              <tr class="module-computability"><td>L1</td><td>7/9</td><td>Course Outline and Introduction</td><td><a href="Lecture0.pdf">Lecture 1</a> Sipser: Chapter 0, and Pages 202-204</td><td></td></tr>
-              <tr class="module-computability"><td>T1</td><td>8/9</td><td>Countability and Uncountability</td><td><a href="Tutorial 1.pdf">Tutorial 1</a></td><td></td></tr>
-              <tr class="module-computability"><td>L2</td><td>9/9</td><td>Computational Problems as Languages</td><td><a href="CSC4010_Lecture2.pdf">Lecture 2</a> <a href="CSC4010_Lecture2(Annotated).pdf">Lecture 2(annotated)</a> AB09: Sections 1.1.1-1.1.2, Aspnes: Chapter 2</td><td></td></tr>
-              <tr class="module-computability"><td>L3</td><td>14/9</td><td>Turing Machines as Algorithms; Decidable Languages; Recognizable Languages</td><td></td><td></td></tr>
-              <tr class="module-computability"><td>L4</td><td>16/9</td><td>Formal Definition of Turing Machines; More Decidable and Recognizable Languages; Properties of Decidable/Recognizable Languages</td><td></td><td></td></tr>
-              <tr class="module-computability"><td>L5</td><td>21/9</td><td>Church-Turing Thesis: Motivation via variants of TMs, Statement of Church-Turing Thesis</td><td></td><td></td></tr>
-              <tr class="module-computability"><td>L6</td><td>23/9</td><td>Universal Turing Machines; Undecidability</td><td></td><td></td></tr>
-              <tr class="module-computability"><td>L7</td><td>28/9</td><td>Proving Undecidability via Diagonalization</td><td></td><td></td></tr>
-              <tr class="module-computability"><td>L8</td><td>30/9</td><td>Proving Undecidability via Reductions</td><td></td><td></td></tr>
-              <tr class="module-computability"><td>L9</td><td>12/10</td><td>Recognizable and Unrecognizable Languages</td><td></td><td></td></tr>
-              <tr class="module-complexity"><td>L10</td><td>14/10</td><td>Asymptotic Notation Refresher, Time Complexity</td><td></td><td></td></tr>
-              <tr class="module-complexity"><td>L11</td><td>19/10</td><td>Time Hierarchy Theorem</td><td></td><td></td></tr>
-              <tr class="module-complexity"><td>L12</td><td>21/10</td><td>P and NP</td><td></td><td></td></tr>
-              <tr class="module-complexity"><td>L13</td><td>26/10</td><td>Boolean Formulas and Satisfiability</td><td></td><td></td></tr>
-              <tr class="module-complexity"><td>L14</td><td>28/10</td><td>Cook-Levin Theorem: SAT is NP-Complete</td><td></td><td></td></tr>
-              <tr class="module-complexity"><td>L15</td><td>2/11</td><td><b>Midterm</b></td><td></td><td></td></tr>
-              <tr class="module-complexity"><td>L16</td><td>4/11</td><td>Space Complexity</td><td></td><td></td></tr>
-              <tr class="module-complexity"><td>L17</td><td>9/11</td><td>Time-Space Hierarchy</td><td></td><td></td></tr>
-              <tr class="module-complexity"><td>L18</td><td>11/11</td><td>Savitch's Theorem</td><td></td><td></td></tr>
-              <tr class="module-complexity"><td>L19</td><td>16/11</td><td>Logarithmic Space</td><td></td><td></td></tr>
-              <tr class="module-complexity"><td>L20</td><td>18/11</td><td>Sublogarithmic Space</td><td></td><td></td></tr>
-              <tr class="module-complexity"><td>L21</td><td>23/11</td><td>Constant Space Computation</td><td></td><td></td></tr>
-              <tr class="module-fine-grained"><td>L22</td><td>25/11</td><td>Fine-grained complexity I</td><td></td><td></td></tr>
-              <tr class="module-fine-grained"><td>L23</td><td>30/11</td><td>Fine-grained complexity II</td><td></td><td></td></tr>
-              <tr class="module-fine-grained"><td>L24</td><td>2/12</td><td>Fine-grained complexity III</td><td></td><td></td></tr>
-              <tr class="module-crypto"><td>L25</td><td>7/12</td><td>Using Lowerbounds for Cryptography I</td><td></td><td></td></tr>
-              <tr class="module-crypto"><td>L26</td><td>9/12</td><td>Cryptographic applications of lower bounds II</td><td></td><td></td></tr>
-              <tr class="module-crypto"><td>L27</td><td>14/12</td><td>Cryptographic applications of lower bounds III</td><td></td><td></td></tr>
-              <tr class="module-crypto"><td>L28</td><td>16/12</td><td>Review</td><td></td><td></td></tr>
+              <tr class="module-computability">
+                <td>L1</td>
+                <td>7/9</td>
+                <td>Course Outline and Introduction</td>
+                <td>
+                  <a href="Lecture0.pdf">Lecture 1</a>
+                  Sipser: Chapter 0, and Pages 202-204
+                </td>
+                <td></td>
+              </tr>
+
+              <tr class="module-computability">
+                <td>T1</td>
+                <td>8/9</td>
+                <td>Countability and Uncountability</td>
+                <td>
+                  <a href="Tutorial 1.pdf">Tutorial 1</a>
+                </td>
+                <td></td>
+              </tr>
+
+              <tr class="module-computability">
+                <td>L2</td>
+                <td>9/9</td>
+                <td>Computational Problems as Languages</td>
+                <td>
+                  <a href="CSC4010_Lecture2.pdf">Lecture 2</a>
+                  <a href="CSC4010_Lecture2(Annotated).pdf">
+                    Lecture 2 (annotated)
+                  </a>
+                  AB09: Sections 1.1.1-1.1.2, Aspnes: Chapter 2
+                </td>
+                <td></td>
+              </tr>
+
+              <tr class="module-computability">
+                <td>L3</td>
+                <td>14/9</td>
+                <td>
+                  Turing Machines as Algorithms; Decidable Languages;
+                  Recognizable Languages
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr class="module-computability">
+                <td>L4</td>
+                <td>16/9</td>
+                <td>
+                  Formal Definition of Turing Machines; More Decidable and
+                  Recognizable Languages; Properties of Decidable/Recognizable
+                  Languages
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr class="module-computability">
+                <td>L5</td>
+                <td>21/9</td>
+                <td>
+                  Church-Turing Thesis: Motivation via variants of TMs,
+                  Statement of Church-Turing Thesis
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr class="module-computability">
+                <td>L6</td>
+                <td>23/9</td>
+                <td>Universal Turing Machines; Undecidability</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr class="module-computability">
+                <td>L7</td>
+                <td>28/9</td>
+                <td>Proving Undecidability via Diagonalization</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr class="module-computability">
+                <td>L8</td>
+                <td>30/9</td>
+                <td>Proving Undecidability via Reductions</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr class="module-computability">
+                <td>L9</td>
+                <td>12/10</td>
+                <td>Recognizable and Unrecognizable Languages</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr class="module-complexity">
+                <td>L10</td>
+                <td>14/10</td>
+                <td>Asymptotic Notation Refresher, Time Complexity</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr class="module-complexity">
+                <td>L11</td>
+                <td>19/10</td>
+                <td>Time Hierarchy Theorem</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr class="module-complexity">
+                <td>L12</td>
+                <td>21/10</td>
+                <td>P and NP</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr class="module-complexity">
+                <td>L13</td>
+                <td>26/10</td>
+                <td>Boolean Formulas and Satisfiability</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr class="module-complexity">
+                <td>L14</td>
+                <td>28/10</td>
+                <td>Cook-Levin Theorem: SAT is NP-Complete</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr class="module-complexity">
+                <td>L15</td>
+                <td>2/11</td>
+                <td><b>Midterm</b></td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr class="module-complexity">
+                <td>L16</td>
+                <td>4/11</td>
+                <td>Space Complexity</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr class="module-complexity">
+                <td>L17</td>
+                <td>9/11</td>
+                <td>Time-Space Hierarchy</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr class="module-complexity">
+                <td>L18</td>
+                <td>11/11</td>
+                <td>Savitch's Theorem</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr class="module-complexity">
+                <td>L19</td>
+                <td>16/11</td>
+                <td>Logarithmic Space</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr class="module-complexity">
+                <td>L20</td>
+                <td>18/11</td>
+                <td>Sublogarithmic Space</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr class="module-complexity">
+                <td>L21</td>
+                <td>23/11</td>
+                <td>Constant Space Computation</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr class="module-fine-grained">
+                <td>L22</td>
+                <td>25/11</td>
+                <td>Fine-grained complexity I</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr class="module-fine-grained">
+                <td>L23</td>
+                <td>30/11</td>
+                <td>Fine-grained complexity II</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr class="module-fine-grained">
+                <td>L24</td>
+                <td>2/12</td>
+                <td>Fine-grained complexity III</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr class="module-crypto">
+                <td>L25</td>
+                <td>7/12</td>
+                <td>Using Lowerbounds for Cryptography I</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr class="module-crypto">
+                <td>L26</td>
+                <td>9/12</td>
+                <td>Cryptographic applications of lower bounds II</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr class="module-crypto">
+                <td>L27</td>
+                <td>14/12</td>
+                <td>Cryptographic applications of lower bounds III</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr class="module-crypto">
+                <td>L28</td>
+                <td>16/12</td>
+                <td>Review</td>
+                <td></td>
+                <td></td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -514,15 +948,16 @@
         <h2 id="resources">Resources</h2>
 
         <p>
-          The main textbook for the course is Introduction to the Theory of Computing, 3rd Edition
-          by Michael Sipser. ISBN-13: 9780357670583
+          The main textbook for the course is Introduction to the Theory of
+          Computing, 3rd Edition by Michael Sipser.
+          ISBN-13: 9780357670583
         </p>
 
         <h3>Further Reading</h3>
 
         <p>
-          There are other resources you may consult, in case you are curious. We will add pointers
-          to specific chapters in the course calendar.
+          There are other resources you may consult, in case you are curious.
+          We will add pointers to specific chapters in the course calendar.
         </p>
 
         <div class="table-scroll">
@@ -530,19 +965,43 @@
             <tbody>
               <tr>
                 <th scope="row">Wat26</th>
-                <td>Thomas Watson, <a href="https://complexityincs.com"><em>Complexity in Computer Science</em></a>.</td>
+                <td>
+                  Thomas Watson,
+                  <a href="https://complexityincs.com">
+                    <em>Complexity in Computer Science</em>
+                  </a>.
+                </td>
               </tr>
+
               <tr>
                 <th scope="row">B</th>
-                <td>Boaz Barak, <a href="https://introtcs.org/"><em>Introduction to Theoretical Computer Science</em></a> (freely available online).</td>
+                <td>
+                  Boaz Barak,
+                  <a href="https://introtcs.org/">
+                    <em>Introduction to Theoretical Computer Science</em>
+                  </a>
+                  (freely available online).
+                </td>
               </tr>
+
               <tr>
                 <th scope="row">AB09</th>
-                <td>Sanjeev Arora and Boaz Barak, <a href="https://theory.cs.princeton.edu/complexity/"><em>Computational Complexity: A Modern Approach</em></a>.</td>
+                <td>
+                  Sanjeev Arora and Boaz Barak,
+                  <a href="https://theory.cs.princeton.edu/complexity/">
+                    <em>Computational Complexity: A Modern Approach</em>
+                  </a>.
+                </td>
               </tr>
+
               <tr>
                 <th scope="row">Vio26</th>
-                <td>Emanuel Viola, <a href="https://www.ccs.neu.edu/home/viola/papers/moti.pdf"><em>Mathematics of The Impossible</em></a>.</td>
+                <td>
+                  Emanuel Viola,
+                  <a href="https://www.ccs.neu.edu/home/viola/papers/moti.pdf">
+                    <em>Mathematics of The Impossible</em>
+                  </a>.
+                </td>
               </tr>
             </tbody>
           </table>
@@ -551,43 +1010,46 @@
         <h3>Bibliography</h3>
 
         <p>
-          This short list collects some foundational references connected to the lectures. It will be
-          expanded during the term.
+          This short list collects some foundational references connected to
+          the lectures. It will be expanded during the term.
         </p>
-
-        <div class="table-scroll">
-          <table class="reference-table">
-            <tbody></tbody>
-          </table>
-        </div>
 
         <h3>Similar Courses</h3>
 
-        <p>Here are several courses with closely related material and useful lecture notes or slides:</p>
+        <p>
+          Here are several courses with closely related material and useful
+          lecture notes or slides:
+        </p>
 
         <ul class="compact-list">
           <li>
-            <a href="https://cs.uwaterloo.ca/~eblais/cs365/">CS 365: Models of Computation, Winter 2026</a>,
+            <a href="https://cs.uwaterloo.ca/~eblais/cs365/">
+              CS 365: Models of Computation, Winter 2026
+            </a>,
             Eric Blais, University of Waterloo.
           </li>
+
           <li>
             <a href="https://williamhoza.com/teaching/autumn2025-intro-to-complexity/">
               Introduction to Complexity Theory, Autumn 2025
             </a>,
             William Hoza, University of Chicago.
           </li>
+
           <li>
             <a href="https://sites.google.com/site/roeitell/lecture-notes/winter-2026-computability-and-complexity">
               CSCC63: Computability and Complexity, Winter 2026
             </a>,
             Roei Tell, University of Toronto.
           </li>
+
           <li>
             <a href="https://www.cs.toronto.edu/~sacook/csc463h/">
               CSC 463H: Computational Complexity and Computability, Winter 2018
             </a>,
             Stephen Cook, University of Toronto.
           </li>
+
           <li>
             <a href="https://www.cs.yale.edu/homes/aspnes/classes/468/notes.pdf">
               CPSC 468/568: Computational Complexity Theory, Spring 2020
@@ -596,7 +1058,9 @@
           </li>
         </ul>
 
-        <p class="last-updated">Last updated: September 3, 2026.</p>
+        <p class="last-updated">
+          Last updated: September 3, 2026.
+        </p>
       </section>
     </div>
 
